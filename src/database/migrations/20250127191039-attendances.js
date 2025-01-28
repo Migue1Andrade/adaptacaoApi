@@ -60,6 +60,15 @@ module.exports = {
 					model: 'places',
 					key: 'id'
 				},
+			},
+            updated_at: {
+				type: Sequelize.DATE,
+				allowNull: true,
+            },
+			created_at: {
+				type: Sequelize.DATE,
+				allowNull: false,
+				defaultValue: Sequelize.fn('now'),
 			}
 		}, { transaction });
 

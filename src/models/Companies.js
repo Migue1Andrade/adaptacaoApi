@@ -13,11 +13,14 @@ class Company extends Model {
 		},{
 			sequelize: connection,
 			tableName: 'companies',
-			modelName: 'company',
+			modelName: 'Company',
 			createdAt: 'created_at',
 			updatedAt: 'updated_at',
 		});
 	}
+    static associate(models) {
+        
+    }
 }
 
 module.exports = Company;

@@ -30,6 +30,15 @@ module.exports = {
 				onUpdate: 'CASCADE',
 				onDelete: 'CASCADE'
 			},
+            updated_at: {
+				type: Sequelize.DATE,
+				allowNull: true,
+            },
+			created_at: {
+				type: Sequelize.DATE,
+				allowNull: false,
+				defaultValue: Sequelize.fn('now'),
+			}
 		}, { transaction });
 
 		await transaction.commit();
