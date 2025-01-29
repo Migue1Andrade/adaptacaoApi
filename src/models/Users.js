@@ -6,11 +6,12 @@ class Users extends Model {
 			name: DataTypes.STRING,
 			email: DataTypes.STRING,
 			password: DataTypes.STRING,
-			cpf: DataTypes.INTEGER,
-			phone: DataTypes.INTEGER,
+			cpf: DataTypes.STRING,
+			phone: DataTypes.STRING,
 			type: DataTypes.STRING,
 			root: DataTypes.BOOLEAN,
-            company_id: DataTypes.INTEGER
+            company_id: DataTypes.INTEGER,
+            is_deleted: DataTypes.BOOLEAN
 		},{
 			sequelize: connection,
 			tableName: 'users',

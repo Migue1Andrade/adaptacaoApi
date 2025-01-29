@@ -29,11 +29,11 @@ module.exports = {
                 allowNull: false
             },
             cpf: {
-                type: Sequelize.INTEGER,
+                type: Sequelize.STRING,
                 allowNull: false
             },
             phone: {
-                type: Sequelize.INTEGER,
+                type: Sequelize.STRING,
                 allowNull: false
             },
 			type: {
@@ -54,6 +54,11 @@ module.exports = {
 				onUpdate: 'CASCADE',
 				onDelete: 'CASCADE'
 			},
+            is_deleted: {
+                type: Sequelize.BOOLEAN,
+                allowNull: false,
+                defaultValue: false,
+            },
             updated_at: {
 				type: Sequelize.DATE,
 				allowNull: true,
