@@ -2,8 +2,8 @@ const express = require('express');
 
 const createCompany = require('./controllers/company/create.js');
 const getOneCompany = require('./controllers/company/getOne.js');
-const updateCompany = require('./controllers/company/updateOne.js')
-const deleteCompany = require('./controllers/company/deleteOne.js')
+const updateCompany = require('./controllers/company/updateOne.js');
+const deleteCompany = require('./controllers/company/deleteOne.js');
 
 const createUser = require('./controllers/users/createOne.js');
 const getOneUser = require('./controllers/users/getOne.js');

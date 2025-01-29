@@ -1,7 +1,7 @@
 const { Model, DataTypes } = require('sequelize');
 
 class Users extends Model {
-    static init(connection) {
+	static init(connection) {
 		super.init({
 			name: DataTypes.STRING,
 			email: DataTypes.STRING,
@@ -10,8 +10,8 @@ class Users extends Model {
 			phone: DataTypes.STRING,
 			type: DataTypes.STRING,
 			root: DataTypes.BOOLEAN,
-            company_id: DataTypes.INTEGER,
-            is_deleted: DataTypes.BOOLEAN
+			company_id: DataTypes.INTEGER,
+			is_deleted: DataTypes.BOOLEAN
 		},{
 			sequelize: connection,
 			tableName: 'users',
@@ -20,10 +20,10 @@ class Users extends Model {
 			updatedAt: 'updated_at',
 		});
 	}
-    static associate(models) {
-        this.belongsTo(models.Company, { foreignKey: 'company_id', as: 'company' });
-        this.hasMany(models.Attendances, { foreignKey: 'user_id', as: 'attendances' });
-    }
+	static associate(models) {
+		this.belongsTo(models.Company, { foreignKey: 'company_id', as: 'company' });
+		this.hasMany(models.Attendances, { foreignKey: 'user_id', as: 'attendances' });
+	}
 }
 
 module.exports = Users;

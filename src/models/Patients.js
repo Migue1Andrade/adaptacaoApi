@@ -15,7 +15,7 @@ class Patients extends Model {
 	}
 	static associate(models) {
 		this.belongsTo(models.Company, { foreignKey: 'company_id', as: 'company' });
-        this.hasMany(models.Attendances, { foreignKey: 'patient_id', as: 'attendances' });
+		this.hasMany(models.Attendances, { foreignKey: 'patient_id', as: 'attendances' });
 	}
 }
 

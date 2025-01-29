@@ -20,22 +20,22 @@ module.exports = {
 				type: Sequelize.STRING,
 				allowNull: false,
 			},
-            email: {
-                type: Sequelize.STRING,
-                allowNull: false
-            },
-            password: {
-                type: Sequelize.STRING,
-                allowNull: false
-            },
-            cpf: {
-                type: Sequelize.STRING,
-                allowNull: false
-            },
-            phone: {
-                type: Sequelize.STRING,
-                allowNull: false
-            },
+			email: {
+				type: Sequelize.STRING,
+				allowNull: false
+			},
+			password: {
+				type: Sequelize.STRING,
+				allowNull: false
+			},
+			cpf: {
+				type: Sequelize.STRING,
+				allowNull: false
+			},
+			phone: {
+				type: Sequelize.STRING,
+				allowNull: false
+			},
 			type: {
 				type: Sequelize.STRING,
 				allowNull: false
@@ -54,15 +54,15 @@ module.exports = {
 				onUpdate: 'CASCADE',
 				onDelete: 'CASCADE'
 			},
-            is_deleted: {
-                type: Sequelize.BOOLEAN,
-                allowNull: false,
-                defaultValue: false,
-            },
-            updated_at: {
+			is_deleted: {
+				type: Sequelize.BOOLEAN,
+				allowNull: false,
+				defaultValue: false,
+			},
+			updated_at: {
 				type: Sequelize.DATE,
 				allowNull: true,
-            },
+			},
 			created_at: {
 				type: Sequelize.DATE,
 				allowNull: false,

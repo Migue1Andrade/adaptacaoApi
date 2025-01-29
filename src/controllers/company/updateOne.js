@@ -3,7 +3,7 @@ const Company = require('../../models/Companies.js');
 module.exports = {
 	async update(req, res) {
 		try {
-            const updateData = {};
+			const updateData = {};
 			const { id } = req.params;
 			const { name, email, address_line, address_neighbourhood, address_city, address_state } = req.body;
 
@@ -12,7 +12,7 @@ module.exports = {
 			const company = await Company.findByPk(id);
 
 			if (!company) return res.status(404).json({ message: 'Companhia não encontrada.' });
-            
+			
 			if (name !== undefined) updateData.name = name;
 			if (email !== undefined) updateData.email = email;
 			if (address_line !== undefined) updateData.address_line = address_line;

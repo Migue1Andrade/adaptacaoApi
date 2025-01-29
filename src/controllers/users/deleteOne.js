@@ -4,7 +4,6 @@ module.exports = {
 	async delete(req, res) {
 		try {
 			const { id } = req.params;
-			console.log("🚀 ~ delete ~ id:", id)
 
 			if (!id) return res.status(400).json({ message: 'O ID do usuario é obrigatório.' });
 			
