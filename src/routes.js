@@ -18,7 +18,12 @@ const getOnePatient = require('./controllers/patients/getOne.js');
 const updateOnePatient = require('./controllers/patients/updateOne.js');
 const deletePatient = require('./controllers/patients/deleteOne.js');
 const listPatient = require('./controllers/patients/list.js');
-const patientSchema = require('./validations/listPatientsSchema.js')
+const patientSchema = require('./validations/listPatientsSchema.js');
+
+const createPlace = require('./controllers/places/create.js');
+const getOnePlace = require('./controllers/places/getOne.js');
+const updateOnePlace = require('./controllers/places/updateOne.js');
+const deleteOnePlace = require('./controllers/places/deleteOne.js')
 
 const routes = express.Router();
 
@@ -38,5 +43,10 @@ routes.get('/api/get/patient/:id', getOnePatient.index);
 routes.put('/api/update/patient/:id', updateOnePatient.update);
 routes.delete('/api/delete/patient/:id', deletePatient.delete);
 routes.get('/api/list/patient', validate(patientSchema), listPatient.list);
+
+routes.post('/api/create/place', createPlace.store);
+routes.get('/api/get/place/:id', getOnePlace.index);
+routes.put('/api/update/place/:id', updateOnePlace.update);
+routes.delete('/api/delete/places/:id', deleteOnePlace.delete)
 
 module.exports = routes;
