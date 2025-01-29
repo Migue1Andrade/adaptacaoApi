@@ -20,6 +20,14 @@ module.exports = {
 				type: Sequelize.STRING,
 				allowNull: false,
 			},
+			born: {
+				type: Sequelize.DATE,
+				allowNull: false
+			},
+			cpf: {
+				type: Sequelize.STRING,
+				allowNull: false,
+			},
 			company_id: {
 				type: Sequelize.INTEGER,
 				allowNull: false,
@@ -30,10 +38,15 @@ module.exports = {
 				onUpdate: 'CASCADE',
 				onDelete: 'CASCADE'
 			},
-            updated_at: {
+			is_deleted: {
+				type: Sequelize.BOOLEAN,
+				allowNull: false,
+				defaultValue: false
+			},
+			updated_at: {
 				type: Sequelize.DATE,
 				allowNull: true,
-            },
+			},
 			created_at: {
 				type: Sequelize.DATE,
 				allowNull: false,
