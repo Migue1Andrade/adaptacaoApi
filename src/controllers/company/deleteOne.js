@@ -5,15 +5,11 @@ module.exports = {
 		try {
 			const { id } = req.params;
 
-			if (!id) {
-				return res.status(400).json({ message: 'O ID da companhia é obrigatório.' });
-			}
+			if (!id) return res.status(400).json({ message: 'O ID da companhia é obrigatório.' });
 
 			const company = await Company.findByPk(id);
 
-			if (!company) {
-				return res.status(404).json({ message: 'Companhia não encontrada.' });
-			}
+			if (!company) return res.status(404).json({ message: 'Companhia não encontrada.' });
 
 			await Company.update({ is_deleted: true }, {
 				where: { id: id },
