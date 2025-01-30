@@ -6,9 +6,8 @@ module.exports = {
 	async up (queryInterface, Sequelize) {
 
 		const transaction = await queryInterface.sequelize.transaction();
-	
+
 		try {
-			
 		await queryInterface.createTable('users', {
 			id: {
 				type: Sequelize.INTEGER,
@@ -77,15 +76,15 @@ module.exports = {
 		}
 	},
 
-  async down (queryInterface) {
+	async down (queryInterface) {
 
-	const transaction = queryInterface.sequelize.transaction();
+		const transaction = queryInterface.sequelize.transaction();
 
-	try {
-		await queryInterface.dropTable('users');
-	} catch (e) {
-		console.log(e);
-		await transaction.rollback();
+		try {
+			await queryInterface.dropTable('users');
+		} catch (e) {
+			console.log(e);
+			await transaction.rollback();
+		}
 	}
-  }
 };

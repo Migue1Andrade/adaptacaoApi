@@ -29,7 +29,6 @@ module.exports = {
 			if (place_id !== undefined) updateData.place_id = place_id;
 
 			if (Object.keys(updateData).length === 0) return res.status(400).json({ message: 'Nenhum campo válido foi enviado para atualização.' });
-			
 
 			const [rowsUpdated, [updatedAttendance]] = await Attendances.update(updateData, {
 				where: { id: id },

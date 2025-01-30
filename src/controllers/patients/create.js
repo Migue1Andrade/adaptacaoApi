@@ -18,6 +18,5 @@ module.exports = {
 
 			return res.status(450).json({ message: 'erro ao criar paciente' });
 		}
-
 	}
 }

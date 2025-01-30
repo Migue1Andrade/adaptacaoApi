@@ -10,7 +10,7 @@ module.exports = {
 
 			if (!id) return res.status(400).json({ message: 'O ID do atendimento é obrigatório.' });
 
-			if (!confirmed_at || !confirmed_by) return res.status(400).json({ message: 'Os campos confirmed_at e confirmed_by são obrigatórios.' });
+			if (!confirmed_at || !confirmed_by) return res.status(400).json({ message:'Os campos confirmed_at e confirmed_by são obrigatórios.' });
 
 			const attendance = await Attendances.findByPk(id);
 

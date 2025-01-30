@@ -18,7 +18,6 @@ module.exports = {
 			} = req.body;
 
 			if (!id) return res.status(400).json({ error: 'User ID is required.' });
-			
 
 			const user = await Users.findByPk(id);
 

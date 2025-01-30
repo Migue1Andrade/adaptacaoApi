@@ -12,7 +12,7 @@ class Attendances extends Model {
 			finished: DataTypes.BOOLEAN,
 			confirmed_by: DataTypes.INTEGER,
 			confirmed_at: DataTypes.DATE,
-            is_deleted: DataTypes.BOOLEAN
+			is_deleted: DataTypes.BOOLEAN
 		},{
 			sequelize: connection,
 			tableName: 'attendances',

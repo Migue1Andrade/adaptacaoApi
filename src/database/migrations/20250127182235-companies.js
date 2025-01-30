@@ -6,10 +6,9 @@ module.exports = {
 	async up (queryInterface, Sequelize) {
 
 		const transaction = await queryInterface.sequelize.transaction();
-	
+
 		try {
-			
-		await queryInterface.createTable('companies', { 
+		await queryInterface.createTable('companies', {
 			id: {
 				type: Sequelize.INTEGER,
 				primaryKey: true,
@@ -17,11 +16,11 @@ module.exports = {
 				allowNull: false, 
 			},
 			name: {
-				type: Sequelize.STRING, 
+				type: Sequelize.STRING,
 				allowNull: false, 
 			},
 			email: {
-				type: Sequelize.STRING, 
+				type: Sequelize.STRING,
 				allowNull: false,
 				unique: true,
 			},
@@ -64,15 +63,15 @@ module.exports = {
 		}
 	},
 
-  async down (queryInterface) {
+	async down (queryInterface) {
 
 	const transaction = queryInterface.sequelize.transaction();
 
-	try {
-		await queryInterface.dropTable('companies');
-	} catch (error) {
-		console.log("🚀 ~ down ~ error:", error)
-		await transaction.rollback();
+		try {
+			await queryInterface.dropTable('companies');
+		} catch (error) {
+			console.log("🚀 ~ down ~ error:", error)
+			await transaction.rollback();
+		}
 	}
-  }
 };

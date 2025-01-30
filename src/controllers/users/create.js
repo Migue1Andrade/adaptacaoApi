@@ -1,17 +1,17 @@
-const Users = require('../../models/Users.js')
-const { hashSync, genSaltSync } = require('bcrypt')
+const Users = require('../../models/Users.js');
+const { hashSync, genSaltSync } = require('bcrypt');
 const saltRounds = 10;
 
 module.exports = {
 	async store(req, res) {
 		const {
-			name, 
-			email, 
-			password, 
-			cpf, 
-			phone, 
-			type, 
-			root, 
+			name,
+			email,
+			password,
+			cpf,
+			phone,
+			type,
+			root,
 			company_id
 		} = req.body;
 

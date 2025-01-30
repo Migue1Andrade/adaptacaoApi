@@ -6,9 +6,8 @@ module.exports = {
 	async up (queryInterface, Sequelize) {
 
 		const transaction = await queryInterface.sequelize.transaction();
-	
+
 		try {
-			
 		await queryInterface.createTable('patients', {
 			id: {
 				type: Sequelize.INTEGER,
@@ -60,7 +59,7 @@ module.exports = {
 			throw error;
 		}
 	},
-	
+
 	async down (queryInterface) {
 
 		const transaction = queryInterface.sequelize.transaction();

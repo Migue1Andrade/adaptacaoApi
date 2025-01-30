@@ -6,9 +6,8 @@ module.exports = {
 	async up (queryInterface, Sequelize) {
 
 		const transaction = await queryInterface.sequelize.transaction();
-	
+
 		try {
-			
 		await queryInterface.createTable('attendances', {
 			id: {
 				type: Sequelize.INTEGER,
@@ -61,28 +60,28 @@ module.exports = {
 					key: 'id'
 				},
 			},
-            finished: {
-                type: Sequelize.BOOLEAN,
-                allowNull: false,
-                defaultValue: false
-            },
-            confirmed_by: {
-                type: Sequelize.INTEGER,
-                allowNull: true,
-                references: {
-                    model: 'users',
-                    key: 'id'
-                }
-            },
-            confirmed_at: {
-                type: Sequelize.DATE,
-                allowNull: true
-            },
-            is_deleted: {
-                type: Sequelize.BOOLEAN,
-                allowNull: false,
-                defaultValue: false
-            },
+			finished: {
+				type: Sequelize.BOOLEAN,
+				allowNull: false,
+				defaultValue: false
+			},
+			confirmed_by: {
+				type: Sequelize.INTEGER,
+				allowNull: true,
+				references: {
+					model: 'users',
+					key: 'id'
+				}
+			},
+			confirmed_at: {
+				type: Sequelize.DATE,
+				allowNull: true
+			},
+			is_deleted: {
+				type: Sequelize.BOOLEAN,
+				allowNull: false,
+				defaultValue: false
+			},
 			updated_at: {
 				type: Sequelize.DATE,
 				allowNull: true,
@@ -105,11 +104,11 @@ module.exports = {
 
 	const transaction = queryInterface.sequelize.transaction();
 
-	try {
-		await queryInterface.dropTable('attendances');
-	} catch (e) {
-		console.log(e);
-		await transaction.rollback();
+		try {
+			await queryInterface.dropTable('attendances');
+		} catch (e) {
+			console.log(e);
+			await transaction.rollback();
+		}
 	}
-  }
 };

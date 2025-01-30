@@ -12,7 +12,7 @@ module.exports = {
 			} = req.body;
 
 			if (!id) return res.status(400).json({ error: 'place ID is required.' });
-			
+
 			const place = await Places.findByPk(id);
 
 			if (!place) return res.status(404).json({ error: 'place not found.' });

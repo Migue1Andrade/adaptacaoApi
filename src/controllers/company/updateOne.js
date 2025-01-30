@@ -12,7 +12,7 @@ module.exports = {
 			const company = await Company.findByPk(id);
 
 			if (!company) return res.status(404).json({ message: 'Companhia não encontrada.' });
-			
+
 			if (name !== undefined) updateData.name = name;
 			if (email !== undefined) updateData.email = email;
 			if (address_line !== undefined) updateData.address_line = address_line;
@@ -30,7 +30,7 @@ module.exports = {
 			});
 
 			if (rowsUpdated === 0) return res.status(400).json({ message: 'Nenhuma atualização foi realizada.' });
-			
+
 			return res.status(200).json({
 				message: 'Companhia atualizada com sucesso.',
 				data: updatedCompany,

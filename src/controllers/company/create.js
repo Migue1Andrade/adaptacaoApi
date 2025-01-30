@@ -3,7 +3,14 @@ const Company = require('../../models/Companies.js');
 module.exports = {
 	async store(req, res) {
 		try {
-			const { name, email, address_line, address_neighbourhood, address_city, address_state } = req.body;
+			const {
+				name,
+				email,
+				address_line,
+				address_neighbourhood,
+				address_city,
+				address_state
+			} = req.body;
 
 			const company = await Company.create({
 				name,
