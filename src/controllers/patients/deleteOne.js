@@ -1,6 +1,6 @@
 const Patients = require('../../models/Patients.js');
 
-module.exports = { 
+module.exports = {
 	async delete(req, res) {
 		const { id } = req.params;
 

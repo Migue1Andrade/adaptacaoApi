@@ -4,7 +4,6 @@ module.exports = {
 	async index(req, res) {
 		try {
 			const { id  } = req.params;
-			console.log("🚀 ~ findCompanyById ~ id:", id)
 
 			if (!id) return res.status(400).json({ error: 'O ID da clínica é obrigatório.' });
 

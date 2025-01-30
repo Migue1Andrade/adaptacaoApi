@@ -1,4 +1,4 @@
-const Users = require('../../models/Users.js')
+const Users = require('../../models/Users.js');
 
 module.exports = {
 	async delete(req, res) {
@@ -6,7 +6,7 @@ module.exports = {
 			const { id } = req.params;
 
 			if (!id) return res.status(400).json({ message: 'O ID do usuario é obrigatório.' });
-			
+
 			const user = await Users.findByPk(id);
 
 			if (!user) return res.status(404).json({ message: 'usuario não encontrada.' });

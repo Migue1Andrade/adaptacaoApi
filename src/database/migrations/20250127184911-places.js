@@ -6,9 +6,8 @@ module.exports = {
 	async up (queryInterface, Sequelize) {
 
 		const transaction = await queryInterface.sequelize.transaction();
-	
+
 		try {
-			
 		await queryInterface.createTable('places', {
 			id: {
 				type: Sequelize.INTEGER,
@@ -20,10 +19,10 @@ module.exports = {
 				type: Sequelize.STRING,
 				allowNull: false,
 			},
-            prefix: {
-                type: Sequelize.STRING,
-                allowNull: false,
-            },
+			prefix: {
+				type: Sequelize.STRING,
+				allowNull: false,
+			},
 			company_id: {
 				type: Sequelize.INTEGER,
 				allowNull: false,
@@ -34,11 +33,11 @@ module.exports = {
 				onUpdate: 'CASCADE',
 				onDelete: 'CASCADE'
 			},
-            is_deleted: {
-                type: Sequelize.BOOLEAN,
-                allowNull: false,
-                defaultValue: false
-            },
+			is_deleted: {
+				type: Sequelize.BOOLEAN,
+				allowNull: false,
+				defaultValue: false
+			},
 			updated_at: {
 				type: Sequelize.DATE,
 				allowNull: true,
@@ -57,15 +56,15 @@ module.exports = {
 		}
 	},
 
-  async down (queryInterface) {
+	async down (queryInterface) {
 
-	const transaction = queryInterface.sequelize.transaction();
+		const transaction = queryInterface.sequelize.transaction();
 
-	try {
-		await queryInterface.dropTable('places');
-	} catch (e) {
-		console.log(e);
-		await transaction.rollback();
+		try {
+			await queryInterface.dropTable('places');
+		} catch (e) {
+			console.log(e);
+			await transaction.rollback();
+		}
 	}
-  }
 };

@@ -6,17 +6,16 @@ module.exports = {
 
 		try {
 			const place = await Places.create({
-				name, 
+				name,
 				company_id,
-                prefix,
-                is_deleted: false
+				prefix,
+				is_deleted: false
 			});
 
 			res.status(200).json(place);
-		}catch(E) {
-			console.log(E);
-			
-			res.status(500).json({ message: 'nao foi possivel criar um novo local, tente novemente mais tarde' });
+		}catch(e) {
+
+			res.status(500).json({ message: e });
 		}
 	}
 }
