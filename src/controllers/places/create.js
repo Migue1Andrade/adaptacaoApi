@@ -2,12 +2,13 @@ const Places = require('../../models/Places.js');
 
 module.exports = {
 	async store(req, res) {
-		const { name, company_id } = req.body;
+		const { name, company_id, prefix } = req.body;
 
 		try {
 			const place = await Places.create({
 				name, 
 				company_id,
+                prefix,
                 is_deleted: false
 			});
 

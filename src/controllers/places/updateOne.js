@@ -7,7 +7,8 @@ module.exports = {
 			const { id } = req.params;
 			const {
 				name,
-				company_id
+				company_id,
+				prefix
 			} = req.body;
 
 			if (!id) return res.status(400).json({ error: 'place ID is required.' });
@@ -17,6 +18,7 @@ module.exports = {
 			if (!place) return res.status(404).json({ error: 'place not found.' });
 
 			if (name) updates.name = name;
+			if (prefix) updates.prefix = prefix;
 			if (company_id) updates.email = company_id;
 
 			await place.update(updates);

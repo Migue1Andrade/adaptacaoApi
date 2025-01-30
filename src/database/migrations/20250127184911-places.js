@@ -20,6 +20,10 @@ module.exports = {
 				type: Sequelize.STRING,
 				allowNull: false,
 			},
+            prefix: {
+                type: Sequelize.STRING,
+                allowNull: false,
+            },
 			company_id: {
 				type: Sequelize.INTEGER,
 				allowNull: false,

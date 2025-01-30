@@ -23,7 +23,21 @@ const patientSchema = require('./validations/listPatientsSchema.js');
 const createPlace = require('./controllers/places/create.js');
 const getOnePlace = require('./controllers/places/getOne.js');
 const updateOnePlace = require('./controllers/places/updateOne.js');
-const deleteOnePlace = require('./controllers/places/deleteOne.js')
+const deleteOnePlace = require('./controllers/places/deleteOne.js');
+const listPlace = require('./controllers/places/list.js')
+const placeSchema = require('./validations/listPlacesSchema.js');
+
+const createAttendance = require('./controllers/attendance/create.js');
+const getOneAttendance = require('./controllers/attendance/getOne.js');
+const updateOneAttendance = require('./controllers/attendance/updateOne.js');
+const deleteOndeAttendance = require('./controllers/attendance/deleteOne.js');
+const statusAttendance = require('./controllers/attendance/status/status.js');
+const confirmAttendance = require('./controllers/attendance/status/confirm.js');
+
+const dashboard = require('./controllers/dashboard/getAll.js');
+const dashSchema = require('./validations/listDashboardSchema.js');
+
+const report = require('./controllers/reports/getAll.js');
 
 const routes = express.Router();
 
@@ -47,6 +61,18 @@ routes.get('/api/list/patient', validate(patientSchema), listPatient.list);
 routes.post('/api/create/place', createPlace.store);
 routes.get('/api/get/place/:id', getOnePlace.index);
 routes.put('/api/update/place/:id', updateOnePlace.update);
-routes.delete('/api/delete/places/:id', deleteOnePlace.delete)
+routes.delete('/api/delete/places/:id', deleteOnePlace.delete);
+routes.get('/api/list/place', validate(placeSchema), listPlace.list);
+
+routes.post('/api/create/attendance', createAttendance.store);
+routes.get('/api/get/attendance/:id', getOneAttendance.index);
+routes.put('/api/update/attendance/:id', updateOneAttendance.update);
+routes.delete('/api/delete/attendance/:id', deleteOndeAttendance.delete);
+routes.put('/api/update/attendance/:id/done', statusAttendance.done);
+routes.put('/api/confirm/attendance/:id', confirmAttendance.update);
+
+routes.get('/api/get/dashboard', validate(dashSchema), dashboard.getDashboard);
+
+routes.get('/api/get/reports/attencance', report.getAttendanceReport);
 
 module.exports = routes;
