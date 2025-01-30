@@ -43,7 +43,7 @@ module.exports = {
 			},
 			end_date: {
 				type: Sequelize.DATE,
-				allowNull: true,
+				allowNull: false,
 			},
 			patient_id: {
 				type: Sequelize.INTEGER,
@@ -55,12 +55,34 @@ module.exports = {
 			},
 			place_id: {
 				type: Sequelize.INTEGER,
-				allowNull: true,
+				allowNull: false,
 				references: {
 					model: 'places',
 					key: 'id'
 				},
 			},
+            finished: {
+                type: Sequelize.BOOLEAN,
+                allowNull: false,
+                defaultValue: false
+            },
+            confirmed_by: {
+                type: Sequelize.INTEGER,
+                allowNull: true,
+                references: {
+                    model: 'users',
+                    key: 'id'
+                }
+            },
+            confirmed_at: {
+                type: Sequelize.DATE,
+                allowNull: true
+            },
+            is_deleted: {
+                type: Sequelize.BOOLEAN,
+                allowNull: false,
+                defaultValue: false
+            },
 			updated_at: {
 				type: Sequelize.DATE,
 				allowNull: true,

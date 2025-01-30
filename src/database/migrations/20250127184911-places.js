@@ -20,6 +20,10 @@ module.exports = {
 				type: Sequelize.STRING,
 				allowNull: false,
 			},
+            prefix: {
+                type: Sequelize.STRING,
+                allowNull: false,
+            },
 			company_id: {
 				type: Sequelize.INTEGER,
 				allowNull: false,
@@ -30,6 +34,11 @@ module.exports = {
 				onUpdate: 'CASCADE',
 				onDelete: 'CASCADE'
 			},
+            is_deleted: {
+                type: Sequelize.BOOLEAN,
+                allowNull: false,
+                defaultValue: false
+            },
 			updated_at: {
 				type: Sequelize.DATE,
 				allowNull: true,
