@@ -1,12 +1,12 @@
 const { Op } = require('sequelize');
 const moment = require('moment');
-const Attendances = require('../../models/Attendances');
-const Patients = require('../../models/Patients');
+const Attendances = require('../models/Attendances');
+const Patients = require('../models/Patients');
 
-module.exports = {
-	async getDashboard(req, res) {
+class DashboardService {
+	async getDashboardData(query) {
 		try {
-			const { start_date, end_date } = req.query;
+			const { start_date, end_date } = query;
 
 			const formattedStartDate = moment(start_date, 'DD/MM/YYYY').format('YYYY-MM-DD');
 			const formattedEndDate = moment(end_date, 'DD/MM/YYYY').format('YYYY-MM-DD');
@@ -30,18 +30,19 @@ module.exports = {
 				}
 			});
 
-			return res.status(200).json({
-				message: 'Dados do dashboard obtidos com sucesso.',
+			return {
+				success: true,
 				data: {
 					totalAttendances,
 					totalPatients,
 					attendances
 				}
-			});
-
+			};
 		} catch (error) {
-			console.error(error);
-			return res.status(500).json({ message: 'Erro ao obter os dados do dashboard.' });
+			console.error("Erro ao obter os dados do dashboard:", error);
+			return { success: false, error: 'Erro ao obter os dados do dashboard.' };
 		}
 	}
-};
+}
+
+module.exports = new DashboardService();
