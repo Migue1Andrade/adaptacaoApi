@@ -2,7 +2,8 @@ const DashboardService = require('../services/dashboardService');
 
 module.exports = {
 	async getDashboard(req, res) {
-		const result = await DashboardService.getDashboardData(req.query);
+		try {
+            const result = await DashboardService.getDashboardData(req.query);
 
 		if (!result.success) {
 			return res.status(500).json({ error: result.error });
@@ -12,5 +13,10 @@ module.exports = {
 			message: 'Dados do dashboard obtidos com sucesso.',
 			data: result.data
 		});
+        }catch(erro) {
+            console.log(erro);
+
+            res.status(500).json({ message: 'erro interno' });
+        }
 	}
 };
