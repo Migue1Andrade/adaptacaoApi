@@ -12,14 +12,11 @@ class AttendanceService {
 			place_id,
 		} = data;
 
-		const formattedStartDate = moment(start_date, 'DD/MM/YYYY').format('YYYY-MM-DD');
-		const formattedEndDate = moment(end_date, 'DD/MM/YYYY').format('YYYY-MM-DD');
-
 		const attendance = await Attendances.create({
 			user_id,
 			company_id,
-			start_date: formattedStartDate,
-			end_date: formattedEndDate,
+			start_date,
+			end_date,
 			patient_id,
 			place_id,
 			confirmed_by: null,
@@ -59,13 +56,13 @@ class AttendanceService {
 
 		const updateData = {};
 
-		if (data.start_date) updateData.start_date = moment(data.start_date, 'DD/MM/YYYY').format('YYYY-MM-DD');
-		if (data.end_date) updateData.end_date = moment(data.end_date, 'DD/MM/YYYY').format('YYYY-MM-DD');
+		if (data.start_date) updateData.start_date = data.start_date;
+		if (data.end_date) updateData.end_date = data.end_date;
 		if (data.user_id !== undefined) updateData.user_id = data.user_id;
 		if (data.company_id !== undefined) updateData.company_id = data.company_id;
 		if (data.patient_id !== undefined) updateData.patient_id = data.patient_id;
 		if (data.place_id !== undefined) updateData.place_id = data.place_id;
-
+x 
 		if (Object.keys(updateData).length === 0) return { success: false, error: 'Nenhum campo válido foi enviado para atualização.' };
 
 		const [rowsUpdated] = await Attendances.update(updateData, {

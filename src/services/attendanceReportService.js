@@ -3,11 +3,9 @@ const Attendances = require('../models/Attendances');
 
 class AttendanceReportService {
 	async getAttendanceReport(req) {
-
 		const { aggregate } = req.query;
 
 		if (!aggregate) {
-
 			const attendanceReport = await Attendances.findAll({
 				attributes: ['id', 'user_id', 'other_field'],
 				include: [
@@ -21,28 +19,36 @@ class AttendanceReportService {
 			return { success: true, data: attendanceReport };
 		}
 
-		const attendanceReport = await Attendances.findAll({
-			attributes: [
-				'user_id',
-				[Users.sequelize.fn('COUNT', Users.sequelize.col('user_id')), 'total_attendances']
-			],
+		const attendances = await Attendances.findAll({
 			include: [
 				{
 					model: Users,
 					as: 'user',
 					attributes: ['id', 'name']
 				}
-			],
-			group: ['user.id', 'user_id'],
-			order: [[Users.sequelize.literal('total_attendances'), 'DESC']],
-			subQuery: false
+			]
 		});
 
-		const formattedReport = attendanceReport.map(record => ({
-			id: record.user.id,
-			name: record.user.name,
-			total_attendances: record.dataValues.total_attendances
-		}));
+		const aggregatedData = attendances.reduce((acc, attendance) => {
+
+			const user = attendance.user;
+			if (!user) return acc;
+
+			if (!acc[user.id]) {
+				acc[user.id] = {
+					id: user.id,
+					name: user.name,
+					total_attendances: 0
+				};
+			}
+
+			acc[user.id].total_attendances += 1;
+			return acc;
+		}, {});
+
+		const formattedReport = Object.values(aggregatedData).sort(
+			(a, b) => b.total_attendances - a.total_attendances
+		);
 
 		return { success: true, data: formattedReport };
 	}

@@ -22,3 +22,4 @@ class Places extends Model {
 }
 
  module.exports = Places;
+ 

@@ -12,10 +12,8 @@ class DashboardService {
 
 		const attendances = await Attendances.findAll({
 			where: {
-				[Op.or]: [
-					{ start_date: { [Op.between]: [formattedStartDate, formattedEndDate] } },
-					{ end_date: { [Op.between]: [formattedStartDate, formattedEndDate] } }
-				]
+				start_date: { [Op.gte]: formattedStartDate },
+				end_date: { [Op.lte]: formattedEndDate }
 			}
 		});
 

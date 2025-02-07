@@ -2,5 +2,6 @@
 
 ### attendanceService -> tirar a formatacao do moment do service e colocar no yup
 
-### dashboardService -> OP.or poder trocado pelo gt, olhar na documentacao do sequelize 
+### dashboardService -> OP.or poder trocado pelo gt, olhar na documentacao do sequelize
+
 ### attendanceReportService -> mudar a funcao fn para outra forma melhor de fazer
