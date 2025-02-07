@@ -3,9 +3,10 @@ const { Op } = require('sequelize');
 const bcrypt = require('bcrypt');
 const { hashSync, genSaltSync } = require('bcrypt');
 const saltRounds = 10;
-const updateData = {};
 
-const updateUserData = (data) => {
+const updateUserData = async (data) => {
+	const updateData = {};
+
 	if (data.name) updateData.name = data.name;
 	if (data.email) updateData.email = data.email;
 	if (data.password) updateData.password = await bcrypt.hash(data.password, 10);
@@ -21,6 +22,7 @@ const updateUserData = (data) => {
 class UserService {
 	async createUser(data) {
 		const salt = genSaltSync(saltRounds);
+
 		data.password = hashSync(data.password, salt);
 
 		const user = await Users.create(data);
@@ -35,7 +37,7 @@ class UserService {
 
 		if (!user) return { success: false, error: 'Usuário não encontrado.' };
 
-		await Users.update({ is_deleted: true }, { where: { id: id } });
+		await Users.update({ is_deleted: true }, { where: { id } });
 
 		return { success: true, message: 'Usuário excluído com sucesso.' };
 	};
@@ -53,11 +55,10 @@ class UserService {
 	async listUsers(query) {
 		const { name, type, page = 1, limit = 10 } = query;
 		const filters = { is_deleted: false };
+		const offset = (page - 1) * limit;
 
 		if (name) filters.name = { [Op.iLike]: `%${name}%` };
 		if (type) filters.type = type;
-
-		const offset = (page - 1) * limit;
 
 		const { count, rows: users } = await Users.findAndCountAll({
 			where: filters,
@@ -82,10 +83,9 @@ class UserService {
 		const user = await Users.findByPk(id);
 		if (!user) return { success: false, error: 'Usuário não encontrado.' };
 
-		const updateData = updateUserData(data);
+		const updateData = await updateUserData(data);
 
 		await user.update(updateData);
-
 		return { success: true, message: 'Usuário atualizado com sucesso.', user };
 	};
 };

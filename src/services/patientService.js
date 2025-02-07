@@ -1,6 +1,15 @@
 const Patients = require('../models/Patients.js');
 const { Op } = require('sequelize');
 const filters = {};
+
+const updatePatientData = (data) => {
+	const updateData = {};
+
+	if (data.name) updateData.name = data.name;
+	if (data.born) updateData.born = data.born;
+	if (data.cpf) updateData.cpf = data.cpf;
+	if (data.company_id) updateData.company_id = data.company_id;
+}
 class PatientService {
 	async createPatient(data) {
 		const patient = await Patients.create(data);
@@ -63,11 +72,7 @@ class PatientService {
 
 		if (!patient) return { success: false, error: 'Paciente não encontrado.' };
 
-		const updateData = {};
-		if (data.name) updateData.name = data.name;
-		if (data.born) updateData.born = data.born;
-		if (data.cpf) updateData.cpf = data.cpf;
-		if (data.company_id) updateData.company_id = data.company_id;
+		const updateData = updatePatientData(data);
 
 		if (Object.keys(updateData).length === 0) return { success: false, error: 'Nenhum campo válido foi enviado para atualização.' };
 
