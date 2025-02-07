@@ -10,8 +10,9 @@ module.exports = {
 			return res.status(201).json(result.patient);
 		} catch (error) {
 			console.error("Erro no store do PatientController:", error);
+
 			return res.status(500).json({ error: "Erro interno no servidor." });
-		}
+		};
 	},
 
 	async delete(req, res) {
@@ -26,7 +27,7 @@ module.exports = {
 			console.error("Erro no delete do PatientController:", error);
 
 			return res.status(500).json({ error: "Erro interno no servidor." });
-		}
+		};
 	},
 
 	async index(req, res) {
@@ -41,7 +42,7 @@ module.exports = {
 			console.error("Erro no index do PatientController:", error);
 
 			return res.status(500).json({ error: "Erro interno no servidor." });
-		}
+		};
 	},
 
 	async list(req, res) {
@@ -55,7 +56,7 @@ module.exports = {
 			console.error("Erro no list do PatientController:", error);
 
 			return res.status(500).json({ error: "Erro interno no servidor." });
-		}
+		};
 	},
 
 	async update(req, res) {
@@ -70,6 +71,6 @@ module.exports = {
 			console.error("Erro no update do PatientController:", error);
 
 			return res.status(500).json({ error: "Erro interno no servidor." });
-		}
+		};
 	}
 };

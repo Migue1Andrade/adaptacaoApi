@@ -13,7 +13,7 @@ class Patients extends Model {
 			tableName: 'patients',
 			modelName: 'Patients',
 			createdAt: 'created_at',
-			updatedAt: 'updated_at',
+			updatedAt: 'updated_at'
 		});
 	}
 	static associate(models) {

@@ -15,7 +15,7 @@ class Company extends Model {
 			tableName: 'companies',
 			modelName: 'Company',
 			createdAt: 'created_at',
-			updatedAt: 'updated_at',
+			updatedAt: 'updated_at'
 		});
 	}
 	static associate(models) {

@@ -1,5 +1,16 @@
 const Places = require('../models/Places.js');
 const { Op } = require('sequelize');
+const filters = {};
+
+const updateplaceData = (data) => {
+	const updateData = {};
+
+	if (data.name) updateData.name = data.name;
+	if (data.prefix) updateData.prefix = data.prefix;
+	if (data.company_id) updateData.company_id = data.company_id;
+
+	return updateData;
+};
 
 class PlacesService {
 	async createPlace(data) {
@@ -8,7 +19,7 @@ class PlacesService {
 			is_deleted: false
 		});
 		return { success: true, place };
-	}
+	};
 
 	async deletePlace(id) {
 		if (!id) return { success: false, error: 'O ID do place é obrigatório.' };
@@ -20,7 +31,7 @@ class PlacesService {
 		await Places.update({ is_deleted: true }, { where: { id: id } });
 
 		return { success: true, message: 'Place deletado com sucesso.' };
-	}
+	};
 
 	async getPlaceById(id) {
 		if (!id) return { success: false, error: 'O ID do place é obrigatório.' };
@@ -30,12 +41,10 @@ class PlacesService {
 		if (!place) return { success: false, error: 'Place não encontrado.' };
 
 		return { success: true, place };
-	}
+	};
 
 	async listPlaces(query) {
 		const { name, page = 1, limit = 10 } = query;
-
-		const filters = {};
 
 		if (name) filters.name = { [Op.iLike]: `%${name}%` };
 
@@ -56,23 +65,21 @@ class PlacesService {
 				places
 			}
 		};
-	}
+	};
 
 	async updatePlace(id, data) {
 		if (!id) return { success: false, error: 'O ID do place é obrigatório.' };
 
 		const place = await Places.findByPk(id);
+
 		if (!place) return { success: false, error: 'Place não encontrado.' };
 
-		const updateData = {};
-		if (data.name) updateData.name = data.name;
-		if (data.prefix) updateData.prefix = data.prefix;
-		if (data.company_id) updateData.company_id = data.company_id;
+		const updateData = updateplaceData(data);
 
 		await place.update(updateData);
 
 		return { success: true, message: 'Place atualizado com sucesso.', place };
-	}
-}
+	};
+};
 
 module.exports = new PlacesService();

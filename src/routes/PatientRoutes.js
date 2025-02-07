@@ -1,8 +1,7 @@
 const express = require('express');
 const validate = require('../middlewares/validate.js');
 const routes = express.Router();
-
-const patientController = require('../controllers/patientController.js')
+const patientController = require('../controllers/patientController.js');
 const patientSchema = require('../validations/listPatientsSchema.js');
 
 routes.post('/api/create/patient', patientController.store);

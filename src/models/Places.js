@@ -12,7 +12,7 @@ class Places extends Model {
 			tableName: 'places',
 			modelName: 'Places',
 			createdAt: 'created_at',
-			updatedAt: 'updated_at',
+			updatedAt: 'updated_at'
 		});
 	}
 	static associate(models) {
@@ -21,5 +21,4 @@ class Places extends Model {
 	}
 }
 
- module.exports = Places;
- 
+module.exports = Places;
