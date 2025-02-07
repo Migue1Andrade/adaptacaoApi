@@ -17,11 +17,11 @@ module.exports = {
 			},
 			name: {
 				type: Sequelize.STRING,
-				allowNull: false,
+				allowNull: false
 			},
 			prefix: {
 				type: Sequelize.STRING,
-				allowNull: false,
+				allowNull: false
 			},
 			company_id: {
 				type: Sequelize.INTEGER,
@@ -40,18 +40,19 @@ module.exports = {
 			},
 			updated_at: {
 				type: Sequelize.DATE,
-				allowNull: true,
+				allowNull: true
 			},
 			created_at: {
 				type: Sequelize.DATE,
 				allowNull: false,
-				defaultValue: Sequelize.fn('now'),
+				defaultValue: Sequelize.fn('now')
 			}
 		}, { transaction });
 
 		await transaction.commit();
 		} catch (error) {
 			await transaction.rollback();
+
 			throw error;
 		}
 	},
@@ -64,6 +65,7 @@ module.exports = {
 			await queryInterface.dropTable('places');
 		} catch (e) {
 			console.log(e);
+
 			await transaction.rollback();
 		}
 	}

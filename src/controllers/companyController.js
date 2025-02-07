@@ -12,7 +12,7 @@ module.exports = {
 			console.error("Erro na store:", error);
 
 			return res.status(500).json({ error: "Erro interno no servidor." });
-		}
+		};
 	},
 
 	async delete(req, res) {
@@ -27,7 +27,7 @@ module.exports = {
 			console.error("Erro na delete:", error);
 
 			return res.status(500).json({ error: "Erro interno no servidor." });
-		}
+		};
 	},
 
 	async index(req, res) {
@@ -42,7 +42,7 @@ module.exports = {
 			console.error("Erro na index:", error);
 
 			return res.status(500).json({ error: "Erro interno no servidor." });
-		}
+		};
 	},
 
 	async update(req, res) {
@@ -57,6 +57,6 @@ module.exports = {
 			console.error("Erro na update:", error);
 
 			return res.status(500).json({ error: "Erro interno no servidor." });
-		}
+		};
 	}
 };

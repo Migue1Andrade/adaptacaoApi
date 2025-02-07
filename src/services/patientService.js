@@ -1,12 +1,12 @@
 const Patients = require('../models/Patients.js');
 const { Op } = require('sequelize');
-
+const filters = {};
 class PatientService {
 	async createPatient(data) {
 		const patient = await Patients.create(data);
 
 		return { success: true, patient };
-	}
+	};
 
 	async deletePatient(id) {
 		if (!id) return { success: false, error: 'O ID do paciente é obrigatório.' };
@@ -18,7 +18,7 @@ class PatientService {
 		await Patients.update({ is_deleted: true }, { where: { id: id } });
 
 		return { success: true, message: 'Paciente deletado com sucesso.' };
-	}
+	};
 
 	async getPatientById(id) {
 		if (!id) return { success: false, error: 'O ID do paciente é obrigatório.' };
@@ -28,12 +28,11 @@ class PatientService {
 		if (!patient) return { success: false, error: 'Paciente não encontrado.' };
 
 		return { success: true, patient };
-	}
+	};
 
 	async listPatients(query) {
 		const { name, cpf, page = 1, limit = 10 } = query;
 
-		const filters = {};
 		if (name) filters.name = { [Op.iLike]: `%${name}%` };
 		if (cpf) filters.cpf = cpf;
 
@@ -54,7 +53,7 @@ class PatientService {
 				patients
 			}
 		};
-	}
+	};
 
 	async updatePatient(id, data) {
 
@@ -75,7 +74,7 @@ class PatientService {
 		await patient.update(updateData);
 
 		return { success: true, message: 'Paciente atualizado com sucesso.', patient };
-	}
-}
+	};
+};
 
 module.exports = new PatientService();

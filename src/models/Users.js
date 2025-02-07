@@ -17,7 +17,7 @@ class Users extends Model {
 			tableName: 'users',
 			modelName: 'Users',
 			createdAt: 'created_at',
-			updatedAt: 'updated_at',
+			updatedAt: 'updated_at'
 		});
 	}
 	static associate(models) {

@@ -2,45 +2,75 @@ const UserService = require('../services/userService');
 
 module.exports = {
 	async store(req, res) {
-		const result = await UserService.createUser(req.body);
+		try {
+			const result = await UserService.createUser(req.body);
 
-		if (!result.success) return res.status(400).json({ error: result.error });
+			if (!result.success) return res.status(400).json({ error: result.error });
 
-		return res.status(200).json(result.user);
+			return res.status(200).json(result.user);
+		} catch (error) {
+			console.error('Erro no store:', error);
+
+			return res.status(500).json({ error: 'Erro interno no servidor.' });
+		};
 	},
 
 	async delete(req, res) {
-		const { id } = req.params;
-		const result = await UserService.deleteUser(id);
+		try {
+			const { id } = req.params;
+			const result = await UserService.deleteUser(id);
 
-		if (!result.success) return res.status(400).json({ error: result.error });
+			if (!result.success) return res.status(400).json({ error: result.error });
 
-		return res.status(200).json({ message: result.message });
+			return res.status(200).json({ message: result.message });
+		} catch (error) {
+			console.error('Erro no delete:', error);
+
+			return res.status(500).json({ error: 'Erro interno no servidor.' });
+		};
 	},
 
 	async index(req, res) {
-		const { id } = req.params;
-		const result = await UserService.getUserById(id);
+		try {
+			const { id } = req.params;
+			const result = await UserService.getUserById(id);
 
-		if (!result.success) return res.status(400).json({ error: result.error });
+			if (!result.success) return res.status(400).json({ error: result.error });
 
-		return res.status(200).json(result.user);
+			return res.status(200).json(result.user);
+		} catch (error) {
+			console.error('Erro no index:', error);
+
+			return res.status(500).json({ error: 'Erro interno no servidor.' });
+		};
 	},
 
 	async list(req, res) {
-		const result = await UserService.listUsers(req.query);
+		try {
+			const result = await UserService.listUsers(req.query);
 
-		if (!result.success) return res.status(500).json({ error: result.error });
+			if (!result.success) return res.status(500).json({ error: result.error });
 
-		return res.status(200).json(result.data);
+			return res.status(200).json(result.data);
+		} catch (error) {
+			console.error('Erro no list:', error);
+
+			return res.status(500).json({ error: 'Erro interno no servidor.' });
+		};
 	},
 
 	async update(req, res) {
-		const { id } = req.params;
-		const result = await UserService.updateUser(id, req.body);
+		try {
+			const { id } = req.params;
+			const result = await UserService.updateUser(id, req.body);
 
-		if (!result.success) return res.status(400).json({ error: result.error });
+			if (!result.success) return res.status(400).json({ error: result.error });
 
-		return res.status(200).json({ message: result.message, user: result.user });
+			return res.status(200).json({ message: result.message, user: result.user });
+		} catch (error) {
+			console.error('Erro no update:', error);
+
+			return res.status(500).json({ error: 'Erro interno no servidor.' });
+		};
 	}
 };

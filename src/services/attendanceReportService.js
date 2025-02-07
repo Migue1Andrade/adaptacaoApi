@@ -17,7 +17,7 @@ class AttendanceReportService {
 				]
 			});
 			return { success: true, data: attendanceReport };
-		}
+		};
 
 		const attendances = await Attendances.findAll({
 			include: [
@@ -30,8 +30,8 @@ class AttendanceReportService {
 		});
 
 		const aggregatedData = attendances.reduce((acc, attendance) => {
-
 			const user = attendance.user;
+
 			if (!user) return acc;
 
 			if (!acc[user.id]) {
@@ -40,18 +40,16 @@ class AttendanceReportService {
 					name: user.name,
 					total_attendances: 0
 				};
-			}
+			};
 
 			acc[user.id].total_attendances += 1;
 			return acc;
 		}, {});
 
-		const formattedReport = Object.values(aggregatedData).sort(
-			(a, b) => b.total_attendances - a.total_attendances
-		);
+		const formattedReport = Object.values(aggregatedData).sort( (a, b) => b.total_attendances - a.total_attendances );
 
 		return { success: true, data: formattedReport };
-	}
-}
+	};
+};
 
 module.exports = new AttendanceReportService();

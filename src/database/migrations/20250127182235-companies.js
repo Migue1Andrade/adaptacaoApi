@@ -13,52 +13,53 @@ module.exports = {
 				type: Sequelize.INTEGER,
 				primaryKey: true,
 				autoIncrement: true,
-				allowNull: false, 
+				allowNull: false
 			},
 			name: {
 				type: Sequelize.STRING,
-				allowNull: false, 
+				allowNull: false
 			},
 			email: {
 				type: Sequelize.STRING,
 				allowNull: false,
-				unique: true,
+				unique: true
 			},
 			address_line: {
 				type: Sequelize.STRING,
-				allowNull: false,
+				allowNull: false
 			},
 			address_neighbourhood: {
 				type: Sequelize.STRING,
-				allowNull: false,
+				allowNull: false
 			},
 			address_city: {
 				type: Sequelize.STRING,
-				allowNull: false,
+				allowNull: false
 			},
 			address_state: {
 				type: Sequelize.STRING,
-				allowNull: false,
+				allowNull: false
 			},
 			is_deleted: {
 				type: Sequelize.BOOLEAN,
-				allowNull: false, 
+				allowNull: false,
 				defaultValue: false
 			},
 			updated_at: {
 				type: Sequelize.DATE,
-				allowNull: true,
+				allowNull: true
 			},
 			created_at: {
 				type: Sequelize.DATE,
 				allowNull: false,
-				defaultValue: Sequelize.fn('now'),
+				defaultValue: Sequelize.fn('now')
 			}
 		}, { transaction });
 
 		await transaction.commit();
 		} catch (error) {
 			await transaction.rollback();
+
 			throw error;
 		}
 	},
@@ -71,6 +72,7 @@ module.exports = {
 			await queryInterface.dropTable('companies');
 		} catch (error) {
 			console.log("🚀 ~ down ~ error:", error)
+
 			await transaction.rollback();
 		}
 	}

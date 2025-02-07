@@ -1,6 +1,5 @@
 const express = require('express');
 const routes = express.Router();
-
 const UserRoutes = require('./routes/UserRoutes');
 const CompanyRoutes = require('./routes/CompanyRoutes');
 const PatientRoutes = require('./routes/PatientRoutes');

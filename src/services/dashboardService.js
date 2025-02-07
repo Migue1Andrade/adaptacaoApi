@@ -35,7 +35,7 @@ class DashboardService {
 				attendances
 			}
 		};
-	}
-}
+	};
+};
 
 module.exports = new DashboardService();

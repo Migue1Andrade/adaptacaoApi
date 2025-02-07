@@ -132,3 +132,4 @@ yarn.lock
 .sequelizerc
 package.json
 package-lock.json
+task
