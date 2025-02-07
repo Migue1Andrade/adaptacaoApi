@@ -60,7 +60,7 @@ module.exports = {
 		};
 	},
 
-	async confirm(req, res) {
+	async confirmAttendance(req, res) {
 		try {
 			const { id } = req.params;
 			const result = await AttendanceService.confirmAttendance(id, req.body);
