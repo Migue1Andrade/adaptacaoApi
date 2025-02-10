@@ -1,0 +1,9 @@
+### tirar os dados sensiveis do banco e colocar ele na env, e a env nao sobe (biel) :check
+
+### revisar a declaracao das associacoes dos models, junto com a tipagem deles(biel) :check
+
+### usar trhow new error no service para ele cair no catch do controller (biel)
+
+## criar um validador de parametros (biel)
+
+### colocar o companu id em todos os filtros do banco (where) (biel) 
