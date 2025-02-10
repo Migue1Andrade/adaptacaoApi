@@ -1,7 +1,7 @@
 const AttendanceService = require('../services/attendanceService.js');
 
 module.exports = {
-	async store(req, res) {
+	async createAttendance(req, res) {
 		try {
 			const result = await AttendanceService.createAttendance(req.body);
 
@@ -15,7 +15,7 @@ module.exports = {
 		};
 	},
 
-	async delete(req, res) {
+	async deleteAttendance(req, res) {
 		try {
 			const { id } = req.params;
 			const result = await AttendanceService.deleteAttendance(id);
@@ -30,10 +30,10 @@ module.exports = {
 		};
 	},
 
-	async index(req, res) {
+	async returnAttendanceById(req, res) {
 		try {
 			const { id } = req.params;
-			const result = await AttendanceService.getAttendanceById(id);
+			const result = await AttendanceService.returnAttendanceById(id);
 
 			if (!result.success) return res.status(400).json({ error: result.error });
 
@@ -45,7 +45,7 @@ module.exports = {
 		};
 	},
 
-	async update(req, res) {
+	async updateAttendance(req, res) {
 		try {
 			const { id } = req.params;
 			const result = await AttendanceService.updateAttendance(id, req.body);
@@ -75,7 +75,7 @@ module.exports = {
 		};
 	},
 
-	async finish(req, res) {
+	async finishAttendance(req, res) {
 		try {
 			const { id } = req.params;
 			const result = await AttendanceService.finishAttendance(id);

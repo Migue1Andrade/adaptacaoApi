@@ -4,10 +4,10 @@ const routes = express.Router();
 const placeController = require('../controllers/placeController.js');
 const placeSchema = require('../validations/listPlacesSchema.js');
 
-routes.post('/api/create/place', placeController.store);
-routes.get('/api/get/place/:id', placeController.index);
-routes.put('/api/update/place/:id', placeController.update);
-routes.delete('/api/delete/places/:id', placeController.delete);
-routes.get('/api/list/place', validate(placeSchema), placeController.list);
+routes.post('/api/create/place', placeController.createPlace);
+routes.get('/api/get/place/:id', placeController.getPlaceById);
+routes.put('/api/update/place/:id', placeController.updatePlace);
+routes.delete('/api/delete/places/:id', placeController.deletePlace);
+routes.get('/api/list/place', validate(placeSchema), placeController.listPlaces);
 
 module.exports = routes;

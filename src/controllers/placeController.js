@@ -1,7 +1,7 @@
 const PlacesService = require('../services/placeService');
 
 module.exports = {
-	async store(req, res) {
+	async createPlace(req, res) {
 		try{
 			const result = await PlacesService.createPlace(req.body);
 
@@ -15,7 +15,7 @@ module.exports = {
 		};
 	},
 
-	async delete(req, res) {
+	async deletePlace(req, res) {
 		try{
 		const { id } = req.params;
 		const result = await PlacesService.deletePlace(id);
@@ -30,7 +30,7 @@ module.exports = {
 		};
 	},
 
-	async index(req, res) {
+	async getPlaceById(req, res) {
 		try{
 		const { id } = req.params;
 		const result = await PlacesService.getPlaceById(id);
@@ -45,7 +45,7 @@ module.exports = {
 		};
 	},
 
-	async list(req, res) {
+	async listPlaces(req, res) {
 		try{const result = await PlacesService.listPlaces(req.query);
 
 			if (!result.success) return res.status(500).json({ error: result.error });
@@ -58,7 +58,7 @@ module.exports = {
 		};
 	},
 
-	async update(req, res) {
+	async updatePlace(req, res) {
 		try{
 			const { id } = req.params;
 		const result = await PlacesService.updatePlace(id, req.body);

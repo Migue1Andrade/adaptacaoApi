@@ -1,7 +1,7 @@
 const PatientService = require('../services/patientService');
 
 module.exports = {
-	async store(req, res) {
+	async createPatient(req, res) {
 		try {
 			const result = await PatientService.createPatient(req.body);
 
@@ -15,7 +15,7 @@ module.exports = {
 		};
 	},
 
-	async delete(req, res) {
+	async deletePatient(req, res) {
 		try {
 			const { id } = req.params;
 			const result = await PatientService.deletePatient(id);
@@ -30,7 +30,7 @@ module.exports = {
 		};
 	},
 
-	async index(req, res) {
+	async getPatientById(req, res) {
 		try {
 			const { id } = req.params;
 			const result = await PatientService.getPatientById(id);
@@ -45,7 +45,7 @@ module.exports = {
 		};
 	},
 
-	async list(req, res) {
+	async listPatients(req, res) {
 		try {
 			const result = await PatientService.listPatients(req.query);
 
@@ -59,7 +59,7 @@ module.exports = {
 		};
 	},
 
-	async update(req, res) {
+	async updatePatient(req, res) {
 		try {
 			const { id } = req.params;
 			const result = await PatientService.updatePatient(id, req.body);

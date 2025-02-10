@@ -48,7 +48,7 @@ class AttendanceReportService {
 
 		const formattedReport = Object.values(aggregatedData).sort( (a, b) => b.total_attendances - a.total_attendances );
 
-		return { success: true, data: formattedReport };
+		return { data: formattedReport };
 	};
 };
 

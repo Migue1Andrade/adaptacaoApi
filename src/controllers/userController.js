@@ -1,7 +1,7 @@
 const UserService = require('../services/userService');
 
 module.exports = {
-	async store(req, res) {
+	async createUser(req, res) {
 		try {
 			const result = await UserService.createUser(req.body);
 
@@ -15,7 +15,7 @@ module.exports = {
 		};
 	},
 
-	async delete(req, res) {
+	async deleteUser(req, res) {
 		try {
 			const { id } = req.params;
 			const result = await UserService.deleteUser(id);
@@ -30,7 +30,7 @@ module.exports = {
 		};
 	},
 
-	async index(req, res) {
+	async getUserById(req, res) {
 		try {
 			const { id } = req.params;
 			const result = await UserService.getUserById(id);
@@ -45,7 +45,7 @@ module.exports = {
 		};
 	},
 
-	async list(req, res) {
+	async listUsers(req, res) {
 		try {
 			const result = await UserService.listUsers(req.query);
 
@@ -59,7 +59,7 @@ module.exports = {
 		};
 	},
 
-	async update(req, res) {
+	async updateUser(req, res) {
 		try {
 			const { id } = req.params;
 			const result = await UserService.updateUser(id, req.body);

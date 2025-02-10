@@ -2,7 +2,7 @@ const Patients = require('../models/Patients.js');
 const { Op } = require('sequelize');
 const filters = {};
 
-const updatePatientData = (data) => {
+const updatePatientData = data => {
 	const updateData = {};
 
 	if (data.name) updateData.name = data.name;

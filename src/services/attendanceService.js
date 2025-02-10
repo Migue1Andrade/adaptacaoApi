@@ -1,7 +1,7 @@
 const moment = require('moment');
 const Attendances = require('../models/Attendances');
 
-const updateAttendanceData = (data) => {
+const updateAttendanceData = data => {
 	const updateData = {};
 
 	if (data.start_date) updateData.start_date = data.start_date;
@@ -29,7 +29,7 @@ class AttendanceService {
 			confirmed_at: null
 		});
 
-		return { success: true, attendance };
+		return attendance;
 	};
 
 	async deleteAttendance(id) {
@@ -44,7 +44,7 @@ class AttendanceService {
 		return { success: true, message: 'Atendimento excluído com sucesso.' };
 	};
 
-	async getAttendanceById(id) {
+	async returnAttendanceById(id) {
 		if (!id) return { success: false, error: 'O ID do atendimento é obrigatório.' };
 
 		const attendance = await Attendances.findByPk(id);

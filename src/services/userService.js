@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt');
 const { hashSync, genSaltSync } = require('bcrypt');
 const saltRounds = 10;
 
-const updateUserData = async (data) => {
+const updateUserData = async data => {
 	const updateData = {};
 
 	if (data.name) updateData.name = data.name;

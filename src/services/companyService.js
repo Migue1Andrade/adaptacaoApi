@@ -1,6 +1,6 @@
 const Company = require('../models/Companies.js');
 
-const updateCompanyData = (data) => {
+const updateCompanyData = data => {
 	const updateData = {};
 
 	if (data.name !== undefined) updateData.name = data.name;

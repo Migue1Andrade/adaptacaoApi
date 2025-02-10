@@ -1,7 +1,7 @@
 const CompanyService = require('../services/companyService');
 
 module.exports = {
-	async store(req, res) {
+	async createCompany(req, res) {
 		try {
 			const result = await CompanyService.createCompany(req.body);
 
@@ -15,7 +15,7 @@ module.exports = {
 		};
 	},
 
-	async delete(req, res) {
+	async deleteCompany(req, res) {
 		try {
 			const { id } = req.params;
 			const result = await CompanyService.deleteCompany(id);
@@ -30,7 +30,7 @@ module.exports = {
 		};
 	},
 
-	async index(req, res) {
+	async getCompanyById(req, res) {
 		try {
 			const { id } = req.params;
 			const result = await CompanyService.getCompanyById(id);
@@ -45,7 +45,7 @@ module.exports = {
 		};
 	},
 
-	async update(req, res) {
+	async updateCompany(req, res) {
 		try {
 			const { id } = req.params;
 			const result = await CompanyService.updateCompany(id, req.body);

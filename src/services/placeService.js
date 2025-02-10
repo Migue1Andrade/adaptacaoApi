@@ -2,7 +2,7 @@ const Places = require('../models/Places.js');
 const { Op } = require('sequelize');
 const filters = {};
 
-const updateplaceData = (data) => {
+const updateplaceData = data => {
 	const updateData = {};
 
 	if (data.name) updateData.name = data.name;

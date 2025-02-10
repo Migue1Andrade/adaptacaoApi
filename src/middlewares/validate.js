@@ -1,4 +1,4 @@
-const validate = (schema) => async (req, res, next) => {
+const validate = schema => async (req, res, next) => {
 	try {
 		await schema.validate(req.params, { abortEarly: false });
 

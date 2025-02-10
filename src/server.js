@@ -1,6 +1,7 @@
 require('./database');
 const express = require('express');
 const routes = require('./routes.js');
+require('dotenv').config();
 const app = express();
 
 app.use(express.json());
@@ -17,4 +18,4 @@ const start = (port) => {
 	};
 };
 
-start(3000);
+start(process.env.DB_PORT);
