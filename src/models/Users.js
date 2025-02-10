@@ -10,7 +10,6 @@ class Users extends Model {
 			phone: DataTypes.STRING,
 			type: DataTypes.STRING,
 			root: DataTypes.BOOLEAN,
-			company_id: DataTypes.INTEGER,
 			is_deleted: DataTypes.BOOLEAN
 		},{
 			sequelize: connection,

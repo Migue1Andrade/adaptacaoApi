@@ -5,7 +5,6 @@ class Places extends Model {
 		super.init({
 			name: DataTypes.STRING,
 			prefix: DataTypes.STRING,
-			company_id: DataTypes.STRING,
 			is_deleted: DataTypes.BOOLEAN
 		},{
 			sequelize: connection,
