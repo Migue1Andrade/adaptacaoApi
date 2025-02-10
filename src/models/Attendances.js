@@ -3,14 +3,9 @@ const { Model, DataTypes } = require('sequelize');
 class Attendances extends Model {
 	static init(connection) {
 		super.init({
-			user_id: DataTypes.STRING,
-			company_id: DataTypes.STRING,
-			start_date: DataTypes.STRING,
-			end_date: DataTypes.STRING,
-			patient_id: DataTypes.STRING,
-			place_id: DataTypes.STRING,
+			start_date: DataTypes.DATE,
+			end_date: DataTypes.DATE,
 			finished: DataTypes.BOOLEAN,
-			confirmed_by: DataTypes.INTEGER,
 			confirmed_at: DataTypes.DATE,
 			is_deleted: DataTypes.BOOLEAN
 		},{

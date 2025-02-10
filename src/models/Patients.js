@@ -5,7 +5,6 @@ class Patients extends Model {
 		super.init({
 			name: DataTypes.STRING,
 			cpf: DataTypes.STRING,
-			company_id: DataTypes.STRING,
 			born: DataTypes.DATE,
 			is_deleted: DataTypes.BOOLEAN
 		},{
