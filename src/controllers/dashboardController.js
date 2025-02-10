@@ -5,7 +5,7 @@ module.exports = {
 		try {
 			const result = await DashboardService.getDashboardData(req.query);
 
-		if (!result.success) return res.status(500).json({ error: result.error });
+		if (!result.success) throw new Error('Erro ao obter dados do dashboard.');
 
 		return res.status(200).json({
 			message: 'Dados do dashboard obtidos com sucesso.',

@@ -5,8 +5,6 @@ module.exports = {
 		try {
 			const result = await CompanyService.createCompany(req.body);
 
-			if (!result.success) return res.status(500).json({ error: result.error });
-
 			return res.status(201).json(result.company);
 		} catch (error) {
 			console.error("Erro na store:", error);
@@ -19,8 +17,6 @@ module.exports = {
 		try {
 			const { id } = req.params;
 			const result = await CompanyService.deleteCompany(id);
-
-			if (!result.success) return res.status(400).json({ error: result.error });
 
 			return res.status(200).json({ message: result.message });
 		} catch (error) {
@@ -35,8 +31,6 @@ module.exports = {
 			const { id } = req.params;
 			const result = await CompanyService.getCompanyById(id);
 
-			if (!result.success) return res.status(400).json({ error: result.error });
-
 			return res.status(200).json(result.company);
 		} catch (error) {
 			console.error("Erro na index:", error);
@@ -49,8 +43,6 @@ module.exports = {
 		try {
 			const { id } = req.params;
 			const result = await CompanyService.updateCompany(id, req.body);
-
-			if (!result.success) return res.status(400).json({ error: result.error });
 
 			return res.status(200).json({ message: result.message });
 		} catch (error) {

@@ -5,8 +5,6 @@ module.exports = {
 		try {
 			const result = await UserService.createUser(req.body);
 
-			if (!result.success) return res.status(400).json({ error: result.error });
-
 			return res.status(200).json(result.user);
 		} catch (error) {
 			console.error('Erro no store:', error);
@@ -19,8 +17,6 @@ module.exports = {
 		try {
 			const { id } = req.params;
 			const result = await UserService.deleteUser(id);
-
-			if (!result.success) return res.status(400).json({ error: result.error });
 
 			return res.status(200).json({ message: result.message });
 		} catch (error) {
@@ -35,8 +31,6 @@ module.exports = {
 			const { id } = req.params;
 			const result = await UserService.getUserById(id);
 
-			if (!result.success) return res.status(400).json({ error: result.error });
-
 			return res.status(200).json(result.user);
 		} catch (error) {
 			console.error('Erro no index:', error);
@@ -48,8 +42,6 @@ module.exports = {
 	async listUsers(req, res) {
 		try {
 			const result = await UserService.listUsers(req.query);
-
-			if (!result.success) return res.status(500).json({ error: result.error });
 
 			return res.status(200).json(result.data);
 		} catch (error) {
@@ -63,8 +55,6 @@ module.exports = {
 		try {
 			const { id } = req.params;
 			const result = await UserService.updateUser(id, req.body);
-
-			if (!result.success) return res.status(400).json({ error: result.error });
 
 			return res.status(200).json({ message: result.message, user: result.user });
 		} catch (error) {

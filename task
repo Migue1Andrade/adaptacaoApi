@@ -2,8 +2,6 @@
 
 ### revisar a declaracao das associacoes dos models, junto com a tipagem deles(biel) :check
 
-### usar trhow new error no service para ele cair no catch do controller (biel)
-
-## criar um validador de parametros (biel)
+### usar trhow new error no service para ele cair no catch do controller (biel) :check
 
 ### colocar o companu id em todos os filtros do banco (where) (biel) 

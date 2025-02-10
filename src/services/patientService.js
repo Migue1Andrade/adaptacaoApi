@@ -14,15 +14,17 @@ class PatientService {
 	async createPatient(data) {
 		const patient = await Patients.create(data);
 
+		if(!patient) throw new Error('Erro ao criar paciente.');
+
 		return { success: true, patient };
 	};
 
 	async deletePatient(id) {
-		if (!id) return { success: false, error: 'O ID do paciente é obrigatório.' };
+		if (!id) throw new Error('O ID do paciente é obrigatório.');
 
 		const patient = await Patients.findByPk(id);
 
-		if (!patient) return { success: false, error: 'Paciente não encontrado.' };
+		if (!patient) throw new Error('Paciente não encontrado.');
 
 		await Patients.update({ is_deleted: true }, { where: { id: id } });
 
@@ -30,11 +32,11 @@ class PatientService {
 	};
 
 	async getPatientById(id) {
-		if (!id) return { success: false, error: 'O ID do paciente é obrigatório.' };
+		if (!id) throw new Error('O ID do paciente é obrigatório.');
 
 		const patient = await Patients.findByPk(id);
 
-		if (!patient) return { success: false, error: 'Paciente não encontrado.' };
+		if (!patient) throw new Error('Paciente não encontrado.');
 
 		return { success: true, patient };
 	};
@@ -66,15 +68,15 @@ class PatientService {
 
 	async updatePatient(id, data) {
 
-		if (!id) return { success: false, error: 'O ID do paciente é obrigatório.' };
+		if (!id) throw new Error('O ID do paciente é obrigatório.');
 
 		const patient = await Patients.findByPk(id);
 
-		if (!patient) return { success: false, error: 'Paciente não encontrado.' };
+		if (!patient) throw new Error('Paciente não encontrado.');
 
 		const updateData = updatePatientData(data);
 
-		if (Object.keys(updateData).length === 0) return { success: false, error: 'Nenhum campo válido foi enviado para atualização.' };
+		if (Object.keys(updateData).length === 0) throw new Error('Nenhum dado para atualizar.');
 
 		await patient.update(updateData);
 

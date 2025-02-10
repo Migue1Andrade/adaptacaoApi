@@ -29,15 +29,17 @@ class AttendanceService {
 			confirmed_at: null
 		});
 
+		if (!attendance) throw new Error('Erro ao criar atendimento.');
+
 		return attendance;
 	};
 
 	async deleteAttendance(id) {
-		if (!id) return { success: false, error: 'O ID do atendimento é obrigatório.' };
+		if (!id) throw new Error('O ID do atendimento é obrigatório.');
 
 		const attendance = await Attendances.findByPk(id);
 
-		if (!attendance) return { success: false, error: 'Atendimento não encontrado.' };
+		if (!attendance) throw new Error('Atendimento não encontrado.');
 
 		await Attendances.update({ is_deleted: true }, { where: { id } });
 
@@ -45,45 +47,45 @@ class AttendanceService {
 	};
 
 	async returnAttendanceById(id) {
-		if (!id) return { success: false, error: 'O ID do atendimento é obrigatório.' };
+		if (!id) throw new Error('O ID do atendimento é obrigatório.');
 
 		const attendance = await Attendances.findByPk(id);
 
-		if (!attendance) return { success: false, error: 'Atendimento não encontrado.' };
+		if (!attendance) throw new Error('Atendimento não encontrado.');
 
 		return { success: true, attendance };
 	};
 
 	async updateAttendance(id, data) {
-		if (!id) return { success: false, error: 'O ID do atendimento é obrigatório.' };
+		if (!id) throw new Error('O ID do atendimento é obrigatório.');
 
 		const attendance = await Attendances.findByPk(id);
 
-		if (!attendance) return { success: false, error: 'Atendimento não encontrado.' };
+		if (!attendance) throw new Error('Atendimento não encontrado.');
 		
 		const updateData = updateAttendanceData(data);
 
-		if (Object.keys(updateData).length === 0) return { success: false, error: 'Nenhum campo válido foi enviado para atualização.' };
+		if (Object.keys(updateData).length === 0) throw new Error('Nenhum dado foi informado para atualização.');
 
 		const [rowsUpdated] = await Attendances.update(updateData, {
 			where: { id }
 		});
 
-		if (rowsUpdated === 0) return { success: false, error: 'Nenhuma atualização foi realizada.' };
+		if (rowsUpdated === 0) throw new Error('Nenhuma atualização foi realizada.');
 
 		return { success: true, message: 'Atendimento atualizado com sucesso.' };
 	};
 
 	async confirmAttendance(id, data) {
-		if (!id) return { success: false, error: 'O ID do atendimento é obrigatório.' };
+		if (!id) throw new Error('O ID do atendimento é obrigatório.');
 
 		const { confirmed_at, confirmed_by } = data;
 
-		if (!confirmed_at || !confirmed_by) return { success: false, error: 'Os campos confirmed_at e confirmed_by são obrigatórios.' };
+		if (!confirmed_at || !confirmed_by) throw new Error('Data e usuário de confirmação são obrigatórios.');
 
 		const attendance = await Attendances.findByPk(id);
 
-		if (!attendance) return { success: false, error: 'Atendimento não encontrado.' };
+		if (!attendance) throw new Error('Atendimento não encontrado.');
 
 		const updateData = {
 			confirmed_at: moment(confirmed_at, 'DD/MM/YYYY').format('YYYY-MM-DD HH:mm:ss'),
@@ -92,17 +94,17 @@ class AttendanceService {
 
 		const [rowsUpdated] = await Attendances.update(updateData, { where: { id } });
 
-		if (rowsUpdated === 0) return { success: false, error: 'Nenhuma confirmação foi realizada.' };
+		if (rowsUpdated === 0) throw new Error('Nenhuma atualização foi realizada.');
 
 		return { success: true, message: 'Atendimento confirmado com sucesso.' };
 	};
 
 	async finishAttendance(id) {
-		if (!id) return { success: false, error: 'O ID do atendimento é obrigatório.' };
+		if (!id) throw new Error('O ID do atendimento é obrigatório.');
 
 		const attendance = await Attendances.findByPk(id);
 
-		if (!attendance) return { success: false, error: 'Atendimento não encontrado.' };
+		if (!attendance) throw new Error('Atendimento não encontrado.'); 
 
 		await Attendances.update({ finished: true }, { where: { id } });
 

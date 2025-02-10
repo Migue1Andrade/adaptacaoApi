@@ -5,8 +5,6 @@ module.exports = {
 		try {
 			const result = await PatientService.createPatient(req.body);
 
-			if (!result.success) return res.status(500).json({ error: result.error });
-
 			return res.status(201).json(result.patient);
 		} catch (error) {
 			console.error("Erro no store do PatientController:", error);
@@ -19,8 +17,6 @@ module.exports = {
 		try {
 			const { id } = req.params;
 			const result = await PatientService.deletePatient(id);
-
-			if (!result.success) return res.status(400).json({ error: result.error });
 
 			return res.status(200).json({ message: result.message });
 		} catch (error) {
@@ -35,8 +31,6 @@ module.exports = {
 			const { id } = req.params;
 			const result = await PatientService.getPatientById(id);
 
-			if (!result.success) return res.status(400).json({ error: result.error });
-
 			return res.status(200).json(result.patient);
 		} catch (error) {
 			console.error("Erro no index do PatientController:", error);
@@ -48,8 +42,6 @@ module.exports = {
 	async listPatients(req, res) {
 		try {
 			const result = await PatientService.listPatients(req.query);
-
-			if (!result.success) return res.status(500).json({ error: result.error });
 
 			return res.status(200).json(result.data);
 		} catch (error) {
@@ -63,8 +55,6 @@ module.exports = {
 		try {
 			const { id } = req.params;
 			const result = await PatientService.updatePatient(id, req.body);
-
-			if (!result.success) return res.status(400).json({ error: result.error });
 
 			return res.status(200).json({ message: result.message, patient: result.patient });
 		} catch (error) {

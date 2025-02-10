@@ -17,15 +17,17 @@ class CompanyService {
 	async createCompany(data) {
 		const company = await Company.create(data);
 
+		if(!company) throw new Error('Erro ao criar a companhia.');
+
 		return { success: true, company };
 	};
 
 	async deleteCompany(id) {
-		if (!id) return { success: false, error: 'O ID da companhia é obrigatório.' };
+		if (!id) throw new Error('O ID da companhia é obrigatório.');
 
 		const company = await Company.findByPk(id);
 
-		if (!company) return { success: false, error: 'Companhia não encontrada.' };
+		if (!company) throw new Error('Companhia não encontrada.');
 
 		await Company.update({ is_deleted: true }, { where: { id: id } });
 
@@ -33,31 +35,31 @@ class CompanyService {
 	};
 
 	async getCompanyById(id) {
-		if (!id) return { success: false, error: 'O ID da clínica é obrigatório.' };
+		if (!id) throw new Error('O ID da companhia é obrigatório.');
 
 		const company = await Company.findByPk(id);
 
-		if (!company) return { success: false, error: 'Clínica não encontrada.' };
+		if (!company) throw new Error('Companhia não encontrada.');
 
 		return { success: true, company };
 	};
 
 	async updateCompany(id, data) {
-		if (!id) return { success: false, error: 'O ID da companhia é obrigatório.' };
+		if (!id) throw new Error('O ID da companhia é obrigatório.');
 
 		const company = await Company.findByPk(id);
 
-		if (!company) return { success: false, error: 'Companhia não encontrada.' };
+		if (!company) throw new Error('Companhia não encontrada.');
 
 		const updateData = updateCompanyData(data);
 
-		if (Object.keys(updateData).length === 0) return { success: false, error: 'Nenhum campo válido foi enviado para atualização.' };
+		if (Object.keys(updateData).length === 0) throw new Error('Nenhum dado para atualizar.');
 
 		const [rowsUpdated] = await Company.update(updateData, {
 			where: { id: id }
 		});
 
-		if (rowsUpdated === 0) return { success: false, error: 'Nenhuma atualização foi realizada.' };
+		if (rowsUpdated === 0) throw new Error('Erro ao atualizar a companhia.');
 
 		return { success: true, message: 'Companhia atualizada com sucesso.' };
 	};

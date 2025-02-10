@@ -6,7 +6,6 @@ const Patients = require('../models/Patients');
 class DashboardService {
 	async getDashboardData(query) {
 		const { start_date, end_date } = query;
-
 		const formattedStartDate = moment(start_date, 'DD/MM/YYYY').format('YYYY-MM-DD');
 		const formattedEndDate = moment(end_date, 'DD/MM/YYYY').format('YYYY-MM-DD');
 

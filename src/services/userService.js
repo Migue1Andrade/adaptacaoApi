@@ -27,15 +27,17 @@ class UserService {
 
 		const user = await Users.create(data);
 
+	   if(!user) throw new Error('Erro ao criar usuário');
+
 		return { success: true, user };
 	};
 
 	async deleteUser(id) {
-		if (!id) return { success: false, error: 'O ID do usuário é obrigatório.' };
+		if (!id) throw new Error('O ID do usuário é obrigatório.');
 
 		const user = await Users.findByPk(id);
 
-		if (!user) return { success: false, error: 'Usuário não encontrado.' };
+		if (!user) throw new Error('Usuário não encontrado.');
 
 		await Users.update({ is_deleted: true }, { where: { id } });
 
@@ -43,11 +45,11 @@ class UserService {
 	};
 
 	async getUserById(id) {
-		if (!id) return { success: false, error: 'O ID do usuário é obrigatório.' };
+		if (!id) throw new Error('O ID do usuário é obrigatório.');
 
 		const user = await Users.findByPk(id);
 
-		if (!user) return { success: false, error: 'Usuário não encontrado.' };
+		if (!user) throw new Error('Usuário não encontrado.');
 
 		return { success: true, user };
 	};
@@ -78,10 +80,11 @@ class UserService {
 	};
 
 	async updateUser(id, data) {
-		if (!id) return { success: false, error: 'O ID do usuário é obrigatório.' };
+		if (!id) throw new Error('O ID do usuário é obrigatório.');
 
 		const user = await Users.findByPk(id);
-		if (!user) return { success: false, error: 'Usuário não encontrado.' };
+
+		if (!user) throw new Error('Usuário não encontrado.');
 
 		const updateData = await updateUserData(data);
 

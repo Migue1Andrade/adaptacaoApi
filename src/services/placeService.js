@@ -18,15 +18,18 @@ class PlacesService {
 			...data,
 			is_deleted: false
 		});
+
+		if (!place) throw new Error('Erro ao criar place.');
+
 		return { success: true, place };
 	};
 
 	async deletePlace(id) {
-		if (!id) return { success: false, error: 'O ID do place é obrigatório.' };
+		if (!id) throw new Error('O ID do place é obrigatório.');
 
 		const place = await Places.findByPk(id);
 
-		if (!place) return { success: false, error: 'Place não encontrado.' };
+		if (!place) throw new Error('Place não encontrado.');
 
 		await Places.update({ is_deleted: true }, { where: { id: id } });
 
@@ -34,11 +37,11 @@ class PlacesService {
 	};
 
 	async getPlaceById(id) {
-		if (!id) return { success: false, error: 'O ID do place é obrigatório.' };
+		if (!id) throw new Error('O ID do place é obrigatório.');
 
 		const place = await Places.findByPk(id);
 
-		if (!place) return { success: false, error: 'Place não encontrado.' };
+		if (!place) throw new Error('Place não encontrado.');
 
 		return { success: true, place };
 	};
@@ -68,11 +71,11 @@ class PlacesService {
 	};
 
 	async updatePlace(id, data) {
-		if (!id) return { success: false, error: 'O ID do place é obrigatório.' };
+		if (!id) throw new Error('O ID do place é obrigatório.');
 
 		const place = await Places.findByPk(id);
 
-		if (!place) return { success: false, error: 'Place não encontrado.' };
+		if (!place) throw new Error('Place não encontrado.');
 
 		const updateData = updateplaceData(data);
 
