@@ -7,11 +7,11 @@ const attendanceSchema = object({
 	place_id: number().required(),
 	start_date: date(),
 	end_date: date()
-});
+}).noUnknown();
 
 const attendanceServiceSchema = object({
 	start_date: date(),
 	end_date: date()
-});
+}).noUnknown();
 
 module.exports = { attendanceSchema, attendanceServiceSchema };

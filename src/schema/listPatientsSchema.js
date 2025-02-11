@@ -5,6 +5,6 @@ const getPatientsSchema = yup.object().shape({
 	cpf: yup.string().matches(/^\d{11}$/, 'CPF deve conter 11 dígitos numéricos').optional(),
 	page: yup.number().integer().min(1).default(1),
 	limit: yup.number().integer().min(1).max(100).default(10)
-});
+}).noUnknown();
 
 module.exports = getPatientsSchema;

@@ -5,6 +5,6 @@ const getUsersSchema = yup.object().shape({
 	type: yup.string().oneOf(['admin', 'medico', 'recepcionista']).optional(),
 	page: yup.number().integer().min(1).default(1),
 	limit: yup.number().integer().min(1).max(100).default(10)
-});
+}).noUnknown();
 
 module.exports = getUsersSchema;

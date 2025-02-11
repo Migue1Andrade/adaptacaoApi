@@ -1,8 +1,1 @@
-### PONTOS PARA SEREM AJUSTADOS
-* Verificar o padrão dos nomes das Rotas
-
-* Verificar os padrões de Erro do controller {TRY / CATCH}
-
-* Como tinha-mos alinhado, as funções que estiverem com um parametro apenas colocar o parametro sem ao parentezes "const nomeMiguel = id => { .... "
-
 * Verificar se tem algum erro de lint, ponto e virgula, espaços a mais etc...
