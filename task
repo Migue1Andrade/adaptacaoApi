@@ -1,7 +1,8 @@
-### tirar os dados sensiveis do banco e colocar ele na env, e a env nao sobe (biel) :check
+### PONTOS PARA SEREM AJUSTADOS
+* Verificar o padrão dos nomes das Rotas
 
-### revisar a declaracao das associacoes dos models, junto com a tipagem deles(biel) :check
+* Verificar os padrões de Erro do controller {TRY / CATCH}
 
-### usar trhow new error no service para ele cair no catch do controller (biel) :check
+* Como tinha-mos alinhado, as funções que estiverem com um parametro apenas colocar o parametro sem ao parentezes "const nomeMiguel = id => { .... "
 
-### colocar o companu id em todos os filtros do banco (where) (biel) 
+* Verificar se tem algum erro de lint, ponto e virgula, espaços a mais etc...

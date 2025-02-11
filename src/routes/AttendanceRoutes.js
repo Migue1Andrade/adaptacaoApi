@@ -8,7 +8,7 @@ routes.post('/api/create/attendance', validate(attendanceSchema), AttendanceCont
 routes.get('/api/get/attendance/:id', AttendanceController.returnAttendanceById);
 routes.put('/api/update/attendance/:id', validate(attendanceServiceSchema), AttendanceController.updateAttendance);
 routes.delete('/api/delete/attendance/:id', AttendanceController.deleteAttendance);
-routes.put('/api/update/attendance/:id/done', AttendanceController.finishAttendance);
+routes.put('/api/finishi/attendance/:id', AttendanceController.finishAttendance);
 routes.put('/api/confirm/attendance/:id', AttendanceController.confirmAttendance);
 
 module.exports = routes;
