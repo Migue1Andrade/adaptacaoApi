@@ -16,6 +16,7 @@ class AttendanceReportService {
 					}
 				]
 			});
+
 			return { success: true, data: attendanceReport };
 		};
 

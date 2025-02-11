@@ -11,7 +11,7 @@ class DashboardService {
 
 		const attendances = await Attendances.findAll({
 			where: {
-				start_date: { [Op.gte]: formattedStartDate },
+				start_date: {[Op.gte]: formattedStartDate },
 				end_date: { [Op.lte]: formattedEndDate }
 			}
 		});

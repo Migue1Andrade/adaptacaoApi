@@ -2,7 +2,7 @@ const express = require('express');
 const validate = require('../middlewares/validate.js');
 const routes = express.Router();
 const placeController = require('../controllers/placeController.js');
-const placeSchema = require('../validations/listPlacesSchema.js');
+const placeSchema = require('../schema/listPlacesSchema.js');
 
 routes.post('/api/create/place', placeController.createPlace);
 routes.get('/api/get/place/:id', placeController.getPlaceById);

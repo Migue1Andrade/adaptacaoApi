@@ -1,7 +1,7 @@
 const express = require('express');
 const routes = express.Router();
 const validate = require('../middlewares/validateBody.js');
-const { attendanceSchema, attendanceServiceSchema } = require('../validations/attendanceFormatDate.js');
+const { attendanceSchema, attendanceServiceSchema } = require('../schema/attendanceFormatDate.js');
 const AttendanceController = require('../controllers/attendanceController.js');
 
 routes.post('/api/create/attendance', validate(attendanceSchema), AttendanceController.createAttendance);

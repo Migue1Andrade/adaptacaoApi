@@ -86,9 +86,9 @@ class UserService {
 
 		if (!user) throw new Error('Usuário não encontrado.');
 
-		const updateData = await updateUserData(data);
+		const updatedUsers = await updateUserData(data);
 
-		await user.update(updateData);
+		await user.update(updatedUsers);
 		return { success: true, message: 'Usuário atualizado com sucesso.', user };
 	};
 };

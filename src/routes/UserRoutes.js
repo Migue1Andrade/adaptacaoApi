@@ -2,7 +2,7 @@ const express = require('express');
 const validate = require('../middlewares/validate.js');
 const routes = express.Router();
 const userController = require('../controllers/userController.js');
-const UserSchema = require('../validations/listUsersSchema');
+const UserSchema = require('../schema/listUsersSchema.js');
 
 routes.post('/api/create/user', userController.createUser);
 routes.get('/api/get/user/:id', userController.getUserById);

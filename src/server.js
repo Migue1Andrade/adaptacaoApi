@@ -2,6 +2,7 @@ require('./database');
 const express = require('express');
 const routes = require('./routes.js');
 require('dotenv').config();
+const process = require('process');
 const app = express();
 
 app.use(express.json());
@@ -12,8 +13,9 @@ const start = port => {
 		app.listen(port, () => {
 			console.log(`app running at: http://localhost:${port}`);
 		});
-	} catch (err) {
-		console.error(err);
+
+	} catch (error) {
+		console.error(error);
 		process.exit();
 	};
 };
