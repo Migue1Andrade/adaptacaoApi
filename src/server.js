@@ -7,7 +7,7 @@ const app = express();
 app.use(express.json());
 app.use(routes);
 
-const start = (port) => {
+const start = port => {
 	try {
 		app.listen(port, () => {
 			console.log(`app running at: http://localhost:${port}`);
