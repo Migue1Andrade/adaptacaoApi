@@ -5,7 +5,7 @@ module.exports = {
 		try {
 			const result = await PatientService.createPatient(req.body);
 
-			return res.status(201).json(result.patient);
+			return res.status(200).json(result.patient);
 		} catch (error) {
 			console.error("Erro no store do PatientController:", error);
 
@@ -33,7 +33,7 @@ module.exports = {
 
 			return res.status(200).json(result.patient);
 		} catch (error) {
-			console.error("Erro no index do PatientController:", error);
+			console.error(error);
 
 			return res.status(500).json({ error: "Erro interno no servidor." });
 		};
@@ -45,7 +45,7 @@ module.exports = {
 
 			return res.status(200).json(result.data);
 		} catch (error) {
-			console.error("Erro no list do PatientController:", error);
+			console.error(error);
 
 			return res.status(500).json({ error: "Erro interno no servidor." });
 		};
@@ -58,7 +58,7 @@ module.exports = {
 
 			return res.status(200).json({ message: result.message, patient: result.patient });
 		} catch (error) {
-			console.error("Erro no update do PatientController:", error);
+			console.error(error);
 
 			return res.status(500).json({ error: "Erro interno no servidor." });
 		};

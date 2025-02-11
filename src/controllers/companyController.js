@@ -7,7 +7,7 @@ module.exports = {
 
 			return res.status(201).json(result.company);
 		} catch (error) {
-			console.error("Erro na store:", error);
+			console.error(error);
 
 			return res.status(500).json({ error: "Erro interno no servidor." });
 		};
@@ -20,7 +20,7 @@ module.exports = {
 
 			return res.status(200).json({ message: result.message });
 		} catch (error) {
-			console.error("Erro na delete:", error);
+			console.error(error);
 
 			return res.status(500).json({ error: "Erro interno no servidor." });
 		};
@@ -33,7 +33,7 @@ module.exports = {
 
 			return res.status(200).json(result.company);
 		} catch (error) {
-			console.error("Erro na index:", error);
+			console.error(error);
 
 			return res.status(500).json({ error: "Erro interno no servidor." });
 		};
@@ -46,7 +46,7 @@ module.exports = {
 
 			return res.status(200).json({ message: result.message });
 		} catch (error) {
-			console.error("Erro na update:", error);
+			console.error(error);
 
 			return res.status(500).json({ error: "Erro interno no servidor." });
 		};

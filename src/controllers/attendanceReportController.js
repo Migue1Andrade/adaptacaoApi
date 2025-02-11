@@ -6,8 +6,8 @@ module.exports = {
 			const result = await AttendanceReportService.getAttendanceReport(req);
 
 			return res.status(200).json(result.data);
-		} catch (e) {
-			console.log(e);
+		} catch (erro) {
+			console.log(erro);
 			
 			return res.status(500).json({ message: 'erro interno' });
 		};

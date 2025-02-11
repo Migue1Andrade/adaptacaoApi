@@ -5,7 +5,7 @@ module.exports = {
 		try{
 			const result = await PlacesService.createPlace(req.body);
 
-		return res.status(201).json(result.place);
+		return res.status(200).json(result.place);
 		}catch(erro) {
 			console.log(erro);
 
